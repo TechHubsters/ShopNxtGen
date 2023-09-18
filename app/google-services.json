@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "803975743482",
+    "project_id": "shopnxtgen-287ac",
+    "storage_bucket": "shopnxtgen-287ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:803975743482:android:e27aa28ccdc23b03870643",
+        "android_client_info": {
+          "package_name": "com.example.shopnxtgen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCK1RpFtEc4Fqli6AmvYsEQTgn1MJ8jzMY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
