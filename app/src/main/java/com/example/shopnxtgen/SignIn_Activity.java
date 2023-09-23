@@ -24,11 +24,11 @@ public class SignIn_Activity extends AppCompatActivity {
 
 
         // this code i've created for checking purpose u can do Your code here or simply modify it
-        loginBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(SignIn_Activity.this, MainActivity.class));
-            }
-        });
+//        loginBTN.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(SignIn_Activity.this, MainActivity.class));
+//            }
+//        });
     }
 }
