@@ -29,7 +29,6 @@ public class LoginActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
 
-        // Check if the user is already authenticated
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser != null) {
             // User is already authenticated, redirect to the main activity
@@ -37,26 +36,21 @@ public class LoginActivity2 extends AppCompatActivity {
             finish();
             return;
         }
-        /// find id
+        // Find IDs
         loginEmail = findViewById(R.id.loginemail);
         loginPass = findViewById(R.id.loginpass);
         Btnlogin = findViewById(R.id.btnlogin);
         BtnLoginwithegoogle = findViewById(R.id.btnloginwithgoogle);
-
-        // end id
-
-
         auth = FirebaseAuth.getInstance();
 
         Btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // code for login button
+                // Code for login button
                 String email = loginEmail.getText().toString();
                 String pass = loginPass.getText().toString();
 
                 if (isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches() && isEmpty(pass)) {
-                    // code for login and other stuff
                     auth.signInWithEmailAndPassword(email, pass)
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
@@ -80,18 +74,16 @@ public class LoginActivity2 extends AppCompatActivity {
         BtnLoginwithegoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // code for click on login with google
+                // Code for clicking on login with Google
                 startActivity(new Intent(LoginActivity2.this, JoinActivity2.class));
             }
         });
     }
 
-    // function
     public boolean isEmpty(String arg) {
         if (arg.trim().isEmpty()) {
             return false;
         }
         return true;
     }
-
 }
