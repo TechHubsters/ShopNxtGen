@@ -31,7 +31,7 @@ public class SignInActivity extends AppCompatActivity {
                 String password = loginPass.getText().toString();
 
                 if (isValidCredentials(email, password)) {
-                    // If login is successful, you can handle navigation to the main activity here.
+                    // If login is successful, handle navigation to the main activity here.
                     navigateToMainActivity();
                 } else {
                     // Handle login failure.
@@ -40,7 +40,7 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
 
-        // Implement click listener for login with Google button.
+        // Implement click listener for login with Google button (if applicable).
 
         signUpBTN.setOnClickListener(new View.OnClickListener() {
             @Override
