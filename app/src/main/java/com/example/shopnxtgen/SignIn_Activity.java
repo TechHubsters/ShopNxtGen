@@ -30,9 +30,8 @@ public class SignInActivity extends AppCompatActivity {
                 String email = loginEmail.getText().toString();
                 String password = loginPass.getText().toString();
 
-                // Implement the login logic here (e.g., using Firebase).
                 if (isValidCredentials(email, password)) {
-                    // If login is successful, navigate to the main activity.
+                    // If login is successful, you can handle navigation to the main activity here.
                     navigateToMainActivity();
                 } else {
                     // Handle login failure.
@@ -41,25 +40,24 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
 
-        // Add a click listener for the Google login button (if applicable).
+        // Implement click listener for login with Google button.
 
         signUpBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Redirect to the sign-up activity.
                 startActivity(new Intent(SignInActivity.this, SignUpActivity.class));
             }
         });
     }
 
     private boolean isValidCredentials(String email, String password) {
-        // Add your validation logic here, e.g., check against a database or use Firebase.
-        // For a simplified example, you can check if email and password are not empty.
+        // Implement your login validation logic here (e.g., using Firebase).
+        // For simplicity, you can check if email and password are not empty.
         return !email.isEmpty() && !password.isEmpty();
     }
 
     private void navigateToMainActivity() {
-        // Implement the navigation logic to your main activity.
+        // Handle the navigation to your main activity here.
         startActivity(new Intent(SignInActivity.this, MainActivity.class));
         finish();
     }
