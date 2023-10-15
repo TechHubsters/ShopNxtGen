@@ -1,13 +1,13 @@
 package com.example.shopnxtgen;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatEditText;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+import android.content.Intent;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatEditText;
 
 public class SignInActivity extends AppCompatActivity {
     AppCompatEditText loginEmail, loginPass;
@@ -18,11 +18,11 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        loginEmail = findViewById(R.id.loginEmail);
-        loginPass = findViewById(R.id.loginPass);
-        loginBTN = findViewById(R.id.btnLOGIN);
-        loginWithGoogleBTN = findViewById(R.id.btnLoginWithGoogle);
-        signUpBTN = findViewById(R.id.btnSignUp);
+        loginEmail = findViewById(R.id.loginEmail); // Replace with the appropriate ID
+        loginPass = findViewById(R.id.loginPass); // Replace with the appropriate ID
+        loginBTN = findViewById(R.id.btnLOGIN); // Replace with the appropriate ID
+        loginWithGoogleBTN = findViewById(R.id.btnLoginWithGoogle); // Replace with the appropriate ID
+        signUpBTN = findViewById(R.id.btnSignUp); // Replace with the appropriate ID
 
         loginBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,16 +31,12 @@ public class SignInActivity extends AppCompatActivity {
                 String password = loginPass.getText().toString();
 
                 if (isValidCredentials(email, password)) {
-                    // If login is successful, handle navigation to the main activity here.
                     navigateToMainActivity();
                 } else {
-                    // Handle login failure.
                     Toast.makeText(SignInActivity.this, "Invalid credentials. Please try again.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
-        // Implement click listener for login with Google button (if applicable).
 
         signUpBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,12 +48,10 @@ public class SignInActivity extends AppCompatActivity {
 
     private boolean isValidCredentials(String email, String password) {
         // Implement your login validation logic here (e.g., using Firebase).
-        // For simplicity, you can check if email and password are not empty.
         return !email.isEmpty() && !password.isEmpty();
     }
 
     private void navigateToMainActivity() {
-        // Handle the navigation to your main activity here.
         startActivity(new Intent(SignInActivity.this, MainActivity.class));
         finish();
     }
