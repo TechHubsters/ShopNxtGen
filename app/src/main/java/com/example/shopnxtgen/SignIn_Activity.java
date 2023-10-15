@@ -9,11 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.mrreco.SignupActivity; // Import the appropriate activity.
-
-public class SignIn_Activity extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity {
     AppCompatEditText loginEmail, loginPass;
-    AppCompatButton loginBTN, loginWithGoogleBTN, signUpBTN; // Include buttons for login, Google login, and sign up.
+    AppCompatButton loginBTN, loginWithGoogleBTN, signUpBTN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,49 +22,45 @@ public class SignIn_Activity extends AppCompatActivity {
         loginPass = findViewById(R.id.loginPass);
         loginBTN = findViewById(R.id.btnLOGIN);
         loginWithGoogleBTN = findViewById(R.id.btnLoginWithGoogle);
-        signUpBTN = findViewById(R.id.btnSignUp); // Add a button for sign-up.
+        signUpBTN = findViewById(R.id.btnSignUp);
 
-        // Add a click listener for the login button.
         loginBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String email = loginEmail.getText().toString();
                 String password = loginPass.getText().toString();
 
-                // Implement the login logic here.
+                // Implement the login logic here (e.g., using Firebase).
                 if (isValidCredentials(email, password)) {
-                    // You can use Firebase or another authentication method to handle login.
                     // If login is successful, navigate to the main activity.
                     navigateToMainActivity();
                 } else {
                     // Handle login failure.
-                    Toast.makeText(SignIn_Activity.this, "Invalid credentials. Please try again.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignInActivity.this, "Invalid credentials. Please try again.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
         // Add a click listener for the Google login button (if applicable).
 
-        // Add a click listener for the sign-up button.
         signUpBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Redirect to the sign-up activity.
-                startActivity(new Intent(SignIn_Activity.this, SignupActivity.class));
+                startActivity(new Intent(SignInActivity.this, SignUpActivity.class));
             }
         });
     }
 
-    // Validate user credentials (you can modify this method).
     private boolean isValidCredentials(String email, String password) {
         // Add your validation logic here, e.g., check against a database or use Firebase.
+        // For a simplified example, you can check if email and password are not empty.
         return !email.isEmpty() && !password.isEmpty();
     }
 
-    // Navigate to the main activity (you can modify this method).
     private void navigateToMainActivity() {
         // Implement the navigation logic to your main activity.
-        startActivity(new Intent(SignIn_Activity.this, MainActivity.class));
+        startActivity(new Intent(SignInActivity.this, MainActivity.class));
         finish();
     }
 }
