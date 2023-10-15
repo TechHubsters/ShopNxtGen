@@ -10,8 +10,6 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 
 public class SignInActivity extends AppCompatActivity {
-    AppCompatEditText loginEmail, loginPass;
-    AppCompatButton loginBTN, loginWithGoogleBTN, signUpBTN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
