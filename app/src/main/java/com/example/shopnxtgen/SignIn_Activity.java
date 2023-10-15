@@ -1,89 +1,72 @@
-package com.example.mrreco;
+package com.example.shopnxtgen;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.example.mrreco.SignupActivity; // Import the appropriate activity.
 
-public class LoginActivity2 extends AppCompatActivity {
+public class SignIn_Activity extends AppCompatActivity {
     AppCompatEditText loginEmail, loginPass;
-    AppCompatButton Btnlogin, BtnLoginwithegoogle;
-    private FirebaseAuth auth;
+    AppCompatButton loginBTN, loginWithGoogleBTN, signUpBTN; // Include buttons for login, Google login, and sign up.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login2);
+        setContentView(R.layout.activity_sign_in);
 
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        if (currentUser != null) {
-            // User is already authenticated, redirect to the main activity
-            startActivity(new Intent(LoginActivity2.this, MainActivity.class));
-            finish();
-            return;
-        }
-        // Find IDs
-        loginEmail = findViewById(R.id.loginemail);
-        loginPass = findViewById(R.id.loginpass);
-        Btnlogin = findViewById(R.id.btnlogin);
-        BtnLoginwithegoogle = findViewById(R.id.btnloginwithgoogle);
-        auth = FirebaseAuth.getInstance();
+        loginEmail = findViewById(R.id.loginEmail);
+        loginPass = findViewById(R.id.loginPass);
+        loginBTN = findViewById(R.id.btnLOGIN);
+        loginWithGoogleBTN = findViewById(R.id.btnLoginWithGoogle);
+        signUpBTN = findViewById(R.id.btnSignUp); // Add a button for sign-up.
 
-        Btnlogin.setOnClickListener(new View.OnClickListener() {
+        // Add a click listener for the login button.
+        loginBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Code for login button
                 String email = loginEmail.getText().toString();
-                String pass = loginPass.getText().toString();
+                String password = loginPass.getText().toString();
 
-                if (isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches() && isEmpty(pass)) {
-                    auth.signInWithEmailAndPassword(email, pass)
-                            .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                                @Override
-                                public void onSuccess(AuthResult authResult) {
-                                    Toast.makeText(LoginActivity2.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(LoginActivity2.this, MainActivity.class));
-                                    finish();
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(LoginActivity2.this, "Login Failed", Toast.LENGTH_SHORT).show();
-                                }
-                            });
+                // Implement the login logic here.
+                if (isValidCredentials(email, password)) {
+                    // You can use Firebase or another authentication method to handle login.
+                    // If login is successful, navigate to the main activity.
+                    navigateToMainActivity();
                 } else {
-                    Toast.makeText(LoginActivity2.this, "Please check your details", Toast.LENGTH_SHORT).show();
+                    // Handle login failure.
+                    Toast.makeText(SignIn_Activity.this, "Invalid credentials. Please try again.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-        BtnLoginwithegoogle.setOnClickListener(new View.OnClickListener() {
+        // Add a click listener for the Google login button (if applicable).
+
+        // Add a click listener for the sign-up button.
+        signUpBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Code for clicking on login with Google
-                startActivity(new Intent(LoginActivity2.this, JoinActivity2.class));
+                // Redirect to the sign-up activity.
+                startActivity(new Intent(SignIn_Activity.this, SignupActivity.class));
             }
         });
     }
 
-    public boolean isEmpty(String arg) {
-        if (arg.trim().isEmpty()) {
-            return false;
-        }
-        return true;
+    // Validate user credentials (you can modify this method).
+    private boolean isValidCredentials(String email, String password) {
+        // Add your validation logic here, e.g., check against a database or use Firebase.
+        return !email.isEmpty() && !password.isEmpty();
+    }
+
+    // Navigate to the main activity (you can modify this method).
+    private void navigateToMainActivity() {
+        // Implement the navigation logic to your main activity.
+        startActivity(new Intent(SignIn_Activity.this, MainActivity.class));
+        finish();
     }
 }
