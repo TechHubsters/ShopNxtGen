@@ -33,7 +33,7 @@ public class LoginActivity2 extends AppCompatActivity {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser != null) {
             // User is already authenticated, redirect to the main activity
-            startActivity(new Intent(LoginActivity2.this, MainActivity.class));
+            startActivity(new Intent(SignIn_Activity.this, MainActivity.class));
             finish();
             return;
         }
@@ -57,18 +57,18 @@ public class LoginActivity2 extends AppCompatActivity {
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
-                                    Toast.makeText(LoginActivity2.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(LoginActivity2.this, MainActivity.class));
+                                    Toast.makeText(SignIn_Activity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(SignIn_Activity.this, MainActivity.class));
                                     finish();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(LoginActivity2.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SignIn_Activity.this, "Login Failed", Toast.LENGTH_SHORT).show();
                                 }
                             });
                 } else {
-                    Toast.makeText(LoginActivity2.this, "Please check your details", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignIn_Activity.this, "Please check your details", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -77,7 +77,7 @@ public class LoginActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Code for clicking on login with Google
-                startActivity(new Intent(LoginActivity2.this, SignUpActivity.class));
+                startActivity(new Intent(SignIn_Activity.this, SignUpActivity.class));
             }
         });
     }
