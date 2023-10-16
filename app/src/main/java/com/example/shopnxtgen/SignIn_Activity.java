@@ -18,6 +18,7 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
+
         loginEmail = findViewById(R.id.loginEmail); // Replace with the appropriate ID
         loginPass = findViewById(R.id.loginPass); // Replace with the appropriate ID
         loginBTN = findViewById(R.id.btnLOGIN); // Replace with the appropriate ID
@@ -54,5 +55,12 @@ public class SignInActivity extends AppCompatActivity {
     private void navigateToMainActivity() {
         startActivity(new Intent(SignInActivity.this, MainActivity.class));
         finish();
+
+        loginBTN = findViewById(R.id.btnLOGIN);
+
+
+
+
+
     }
 }
